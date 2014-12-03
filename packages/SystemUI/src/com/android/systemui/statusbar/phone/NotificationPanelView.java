@@ -187,6 +187,7 @@ public class NotificationPanelView extends PanelView implements
     private boolean mTwoFingerQsExpandPossible;
 
     private int mOneFingerQuickSettingsIntercept;
+    private int mQsSmartPullDown;
 
     /**
      * If we are in a panel collapsing motion, we reset scrollY of our scroll view but still
@@ -977,6 +978,12 @@ public class NotificationPanelView extends PanelView implements
                 break;
         }
         showQsOverride &= mStatusBarState == StatusBarState.SHADE;
+
+        if (mQsSmartPullDown == 1 && !mStatusBar.hasActiveClearableNotificationsQS()
+                || mQsSmartPullDown == 2 && !mStatusBar.hasActiveOngoingNotifications()
+                || mQsSmartPullDown == 3 && !mStatusBar.hasActiveVisibleNotifications()) {
+                showQsOverride = true;
+        }
 
         return showQsOverride || twoFingerDrag || stylusButtonClickDrag || mouseButtonClickDrag;
     }
@@ -2730,6 +2737,10 @@ public class NotificationPanelView extends PanelView implements
 
     public void setQsQuickPulldown(int qsQuickPulldownValue) {
         mOneFingerQuickSettingsIntercept = qsQuickPulldownValue;
+    }
+
+    public void setQsSmartPulldown(int qsSmartPulldown) {
+        mQsSmartPullDown = qsSmartPulldown;
     }
 
     public void updateDoubleTapToSleep(boolean doubleTapToSleepEnabled) {
