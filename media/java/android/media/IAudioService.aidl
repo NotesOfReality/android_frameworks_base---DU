@@ -214,4 +214,8 @@ interface IAudioService {
      * @hide
      */
     boolean isVisualizerLocked(String callingPackage);
+
+    void setStreamMaxVolume(int streamType, int maxVol);
+
+    int getDefaultStreamMaxVolume(int streamType);
 }
