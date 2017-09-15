@@ -110,4 +110,8 @@
     <!-- Two target preference vertical divider color -->
     <color name="list_divider_dark">#64000000</color>
 
+	<!-- Materialized Toast Notification background and text colors-->
+	<color name="toast_bg">@color/white</color>
+	<color name="toast_text">@color/black</color>
+
 </resources>
