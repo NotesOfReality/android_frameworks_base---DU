@@ -200,4 +200,7 @@
   <!-- Screenrecord -->
   <java-symbol type="bool" name="config_enableScreenrecordChord" />
 
+	<!--Un/link ringtone and notification volume -->
+   <java-symbol type="drawable" name="ic_audio_notification_new" />
+   <java-symbol type="drawable" name="ic_audio_notification_mute_new" />
 </resources>
