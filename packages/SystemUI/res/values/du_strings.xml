@@ -166,4 +166,9 @@
     <string name="lte_on">LTE ON </string>
     <string name="lte_off">LTE OFF</string>
 
+    <!-- HW Keys (Toogling) Tile -->
+    <string name="accessibility_quick_settings_hwkeys_on">HW keys on</string>
+    <string name="accessibility_quick_settings_hwkeys_off">HW keys off</string>
+    <string name="quick_settings_hwkeys_label">HW keys</string>
+
 </resources>
