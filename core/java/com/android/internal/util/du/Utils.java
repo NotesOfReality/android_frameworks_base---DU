@@ -29,6 +29,8 @@ import android.os.PowerManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
+import android.view.IWindowManager;
+import android.view.WindowManagerGlobal;
 
 import com.android.internal.R;
 import com.android.internal.statusbar.IStatusBarService;
@@ -91,6 +93,17 @@ public class Utils {
                 }
             }
         }
+    
+    // Screenrecord Service Improvement
+    public static void takeScreenrecord(int mode) {
+        IWindowManager wm = WindowManagerGlobal.getWindowManagerService();
+        try {
+            wm.screenRecordAction(mode);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
     }
 
     // Check to see if device supports the Fingerprint scanner
