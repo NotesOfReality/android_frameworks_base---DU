@@ -189,4 +189,7 @@
     <!-- Whether to ignore RSSNR for LTE -->
     <java-symbol type="bool" name="config_ignore_rssnr" />
 
+	<!-- Setting to false will disable CM's IME switcher implementation for tablets -->
+	<java-symbol type="bool" name="config_show_cmIMESwitcher"/>
+
 </resources>
