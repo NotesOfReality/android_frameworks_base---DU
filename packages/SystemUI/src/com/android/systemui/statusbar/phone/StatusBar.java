@@ -8572,4 +8572,8 @@ public class StatusBar extends SystemUI implements DemoMode,
             mNavigationBar.getBarTransitions().setAutoDim(true);
         }
     };
+
+    public void stopBrightnessControl() {
+        mHandler.removeCallbacks(mLongPressBrightnessChange);
+    }
 }
