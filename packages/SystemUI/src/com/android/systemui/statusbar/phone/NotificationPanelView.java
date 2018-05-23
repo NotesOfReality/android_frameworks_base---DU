@@ -264,6 +264,11 @@ public class NotificationPanelView extends PanelView implements
             public boolean onDoubleTap(MotionEvent e) {
                 mStatusBar.stopBrightnessControl();
                 Utils.switchScreenOff(context);
+                // quick pulldown can trigger those values
+                // on double tap - so reset them
+                mQsExpandImmediate = false;
+                requestPanelHeightUpdate();
+                setListening(false);
                 return true;
             }
         });
