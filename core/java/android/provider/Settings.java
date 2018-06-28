@@ -4825,6 +4825,11 @@ public final class Settings {
         public static final String VOLUME_LINK_NOTIFICATION = "volume_link_notification";
 
         /**
+         * Whether to enable Pie Volume dialog
+         */
+        public static final String PIE_VOLUME_DIALOG = "pie_volume_dialog";
+
+        /**
          * Settings to backup. This is here so that it's in the same place as the settings
          * keys and easy to update.
          *
