@@ -22,4 +22,7 @@
     <!-- Whether to enable doze always on -->
     <bool name="config_enableDozeAlwaysOn">false</bool>
 
+    <!-- Whether to ignore RSSNR for LTE -->
+    <bool name="config_ignore_rssnr">false</bool>
+
 </resources>
