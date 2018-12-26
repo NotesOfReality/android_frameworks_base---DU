@@ -304,6 +304,13 @@ final class DefaultPermissionGrantPolicy {
                 grantRuntimePermissionsLPw(installerPackage, STORAGE_PERMISSIONS, true, userId);
             }
 
+            // Google Markup
+            PackageParser.Package markupPackage = getSystemPackageLPr(
+                    "com.google.android.markup");
+            if (markupPackage != null && doesPackageSupportRuntimePermissions(markupPackage)) {
+                grantRuntimePermissionsLPw(markupPackage, STORAGE_PERMISSIONS, userId);
+            }
+
             // Verifier
             PackageParser.Package verifierPackage = getSystemPackageLPr(
                     mService.mRequiredVerifierPackage);
