@@ -93,6 +93,7 @@ public class Utils {
                 }
             }
         }
+    }
     
     // Screenrecord Service Improvement
     public static void takeScreenrecord(int mode) {
@@ -102,8 +103,6 @@ public class Utils {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
     }
 
     // Check to see if device supports the Fingerprint scanner
