@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2011 The Android Open Source Project
  * Modifications Copyright (C) The OmniROM Project
+  * Modifications Copyright (C) 2018 CypherOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +19,7 @@
  * were made by the OmniROM Project.
  *
  * Modifications Copyright (C) 2013 The OmniROM Project
+  * Modifications Copyright (C) 2018 CypherOS
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -64,6 +66,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.android.systemui.R;
+import com.android.systemui.SystemUI;
 import com.android.systemui.util.NotificationChannels;
 
 import java.io.BufferedReader;
@@ -297,7 +300,9 @@ class GlobalScreenrecord {
             .setSmallIcon(R.drawable.ic_capture_video)
             .setWhen(mRecordingStartTime)
             .setUsesChronometer(true)
-            .setOngoing(true);
+            .setOngoing(true)
+            .setColor(r.getColor(com.android.internal.R.color.system_notification_accent_color));
+        SystemUI.overrideNotificationAppName(mContext, builder);
 
         Intent stopIntent = new Intent(mContext, TakeScreenrecordService.class)
             .setAction(TakeScreenrecordService.ACTION_STOP);
@@ -569,9 +574,13 @@ class GlobalScreenrecord {
             .setTicker(r.getString(R.string.screenrecord_notif_final_ticker))
             .setContentTitle(r.getString(R.string.screenrecord_notif_completed) + " ("
                     + totalTime + ", " + size + "MB" + ")")
+            .setContentText(r.getString(R.string.screenrecord_notif_description))
             .setSmallIcon(R.drawable.ic_capture_video)
             .setWhen(System.currentTimeMillis())
-            .setAutoCancel(true);
+            .setShowWhen(true)
+            .setAutoCancel(true)
+            .setColor(r.getColor(com.android.internal.R.color.system_notification_accent_color));
+        SystemUI.overrideNotificationAppName(mContext, builder);
         builder
             .addAction(R.drawable.ic_screenshot_share,
                 r.getString(com.android.internal.R.string.share), shareAction)
