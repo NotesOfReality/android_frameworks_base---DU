@@ -311,6 +311,13 @@ final class DefaultPermissionGrantPolicy {
                 grantRuntimePermissionsLPw(markupPackage, STORAGE_PERMISSIONS, userId);
             }
 
+            // Default Gallery App
+            PackageParser.Package gallery3dPackage = getSystemPackageLPr(
+                    "com.android.gallery3d");
+            if (gallery3dPackage != null && doesPackageSupportRuntimePermissions(gallery3dPackage)) {
+                grantRuntimePermissionsLPw(gallery3dPackage, STORAGE_PERMISSIONS, userId);
+            }
+
             // Verifier
             PackageParser.Package verifierPackage = getSystemPackageLPr(
                     mService.mRequiredVerifierPackage);
