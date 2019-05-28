@@ -31,10 +31,12 @@ import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
+import android.app.ActivityManager;
 
 import com.android.internal.R;
 import com.android.internal.statusbar.IStatusBarService;
 
+import java.util.List;
 import java.util.Locale;
 
 public class Utils {
@@ -157,4 +159,31 @@ public class Utils {
             pm.goToSleep(SystemClock.uptimeMillis());
         }
     }
+
+    /**
+     * Checks if a specific service is running.
+     *
+     * @param context     The context to retrieve the activity manager
+     * @param serviceName The name of the service
+     * @return Whether the service is running or not
+     */
+    public static boolean isServiceRunning(Context context, String serviceName) {
+        ActivityManager activityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningServiceInfo> services = activityManager
+                .getRunningServices(Integer.MAX_VALUE);
+
+        if (services != null) {
+            for (ActivityManager.RunningServiceInfo info : services) {
+                if (info.service != null) {
+                    if (info.service.getClassName() != null && info.service.getClassName()
+                            .equalsIgnoreCase(serviceName)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
 }
